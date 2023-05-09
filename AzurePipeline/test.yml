@@ -9,7 +9,7 @@ steps:
   displayName: 'Test'
 
 - script:
-    echo 123:
-    echo 321
-    echo $HOSTNAME
+    - echo 123
+    - echo 321
+    - echo $HOSTNAME
   displayName: 'Test Script 2'
