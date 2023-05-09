@@ -1,15 +1,15 @@
+---
 trigger:
-- main
+  - main
 
 pool:
-  name: 'mycomputeragent'
+  name: mycomputeragent
 
 steps:
-- script: echo testing
-  displayName: 'Test'
-
-- script: 
-    echo this is the hostname:
-    echo ---------------------
-    echo $HOSTNAME
-  displayName: 'Test Script 2'
+  - script: echo testing
+    displayName: Test
+  - script: 
+      echo this is the hostname
+      echo ---------------------
+      echo $HOSTNAME
+    displayName: Test Script 2
