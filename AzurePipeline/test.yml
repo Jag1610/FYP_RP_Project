@@ -8,7 +8,7 @@ steps:
 - script: echo testing
   displayName: 'Test'
 
--script:
+- script:
   echo 123
   echo 321
   echo $HOSTNAME
