@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "FYP_RP_Project": {
-      "commandName": "Project",
-      "commandLineArgs": "--port 7014",
-      "launchBrowser": false
-    }
-  }
-}
