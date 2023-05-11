@@ -16,7 +16,7 @@ namespace MyNamespace
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            string responseMessage = "<html><body><h1>Hello World!</h1></body></html>";
+            string responseMessage = "<html><body><h1>This is our test website</h1></body></html>";
 
             return new ContentResult
             {
