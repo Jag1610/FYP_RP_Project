@@ -1,4 +1,5 @@
 ---
+- task: SonarQubeAnalyze@5
 trigger:
   - main
 
