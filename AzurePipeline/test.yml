@@ -16,6 +16,11 @@ steps:
       echo $HOSTNAME
     displayName: Test Script 2
 
+  - task: WhiteSource@21
+    inputs:
+      cwd: '$(System.DefaultWorkingDirectory)'
+      projectName: '$(projectName)'
+
   - task: SonarCloudPrepare@1
     inputs:
       SonarCloud: 'SonarCloud Service'
@@ -33,7 +38,3 @@ steps:
       pollingTimeoutSec: '300'
 
 
-  - task: WhiteSource@21
-    inputs:
-      cwd: '$(System.DefaultWorkingDirectory)'
-      projectName: '$(projectName)'
