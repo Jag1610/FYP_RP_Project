@@ -37,4 +37,37 @@ steps:
     inputs:
       pollingTimeoutSec: '300'
 
+  
+#  trigger:
+#- dependabot/github_actions/helm/kind-action-1.7.0
+
+  #pool:
+    #vmImage: ubuntu-latest
+
+#creating namespace
+
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'aks-connection'
+    command: 'create'
+    arguments: 'namespace monitoring'
+
+
+- task: HelmDeploy@0
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceConnection: 'aks-connection'
+    namespace: 'monitoring'
+    command: 'install'
+    chartType: 'FilePath'
+    chartPath: 'charts/kube-prometheus-stack'
+    releaseName: 'prometheus'
+    arguments: '--dependency-update'
+  #  azureSubscriptionForACR: 'b361fd1e-96a9-4273-9b8e-cca9183ead8d'
+  #  azureResourceGroupForACR: 'monitoring'
+  #  azurecontainerRegistry: $(azureContainerRegistry)
+    
+
+
 
