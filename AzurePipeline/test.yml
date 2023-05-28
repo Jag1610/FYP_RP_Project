@@ -7,6 +7,16 @@ pool:
   name: 'mycomputeragent'
 
 steps:
+  - task: SonarCloudPrepare@1
+    inputs:
+      SonarCloud: 'SonarCloud Service'
+      organization: '21022609-gang'
+      scannerMode: 'MSBuild'
+      configMode: 'manual'
+      cliProjectKey: '21022609-Gang_FYP_Project'
+      cliProjectName: 'FYP_Project'
+      cliSources: '.'
+
   - script: echo testing
     displayName: Test
 
@@ -21,21 +31,20 @@ steps:
       cwd: '$(System.DefaultWorkingDirectory)'
       projectName: '$(projectName)'
 
-  - task: SonarCloudPrepare@1
+  - task: VSTest@2
     inputs:
-      SonarCloud: 'SonarCloud Service'
-      organization: '21022609-gang'
-      scannerMode: 'CLI'
-      configMode: 'manual'
-      cliProjectKey: '21022609-Gang_FYP_Project'
-      cliProjectName: 'FYP_Project'
-      cliSources: '.'
+      testSelector: 'testAssemblies'
+      testAssemblyVer2: |
+        **\*test*.dll
+        !**\*TestAdapter.dll
+        !**\obj\**
+      searchFolder: '$(System.DefaultWorkingDirectory)'
+      codeCoverageEnabled: true
+      testRunTitle: 'VS Test'
 
   - task: SonarCloudAnalyze@1
 
   - task: SonarCloudPublish@1
     inputs:
       pollingTimeoutSec: '300'
-
-
 
